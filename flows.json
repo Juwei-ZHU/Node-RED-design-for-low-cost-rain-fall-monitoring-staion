@@ -1,0 +1,803 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Rainfall stations",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "77c426997623c5ee",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "Rain gauges",
+        "topic": "#",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "e37989fb7aa1de61",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "e1d64f9c93bd029f"
+            ]
+        ]
+    },
+    {
+        "id": "e1d64f9c93bd029f",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Seperate data from three stations",
+        "property": "payload.end_device_ids.device_id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "station-1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "station-2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "station-3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "594115454e3459a9"
+            ],
+            [
+                "0c4edcd5a2d061cb"
+            ],
+            [
+                "ac34c9be8ca1377a"
+            ]
+        ]
+    },
+    {
+        "id": "48d20751eac3537d",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 280,
+        "wires": [
+            [
+                "20a947f47b82be75"
+            ]
+        ]
+    },
+    {
+        "id": "237dfe8181f5c722",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 240,
+        "wires": [
+            [
+                "54947c6c9d32a11e"
+            ]
+        ]
+    },
+    {
+        "id": "56a5180cdee5de2e",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 200,
+        "wires": [
+            [
+                "47c9bee1d70207f3"
+            ]
+        ]
+    },
+    {
+        "id": "7d2b69d91233b479",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 160,
+        "wires": [
+            [
+                "2ff607f319292da9"
+            ]
+        ]
+    },
+    {
+        "id": "5a05beb3fd0457b2",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station1!A1",
+        "flatten": false,
+        "name": "to GS station1",
+        "x": 1020,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ff607f319292da9",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station1!A1",
+        "flatten": false,
+        "name": "to GS station1",
+        "x": 1020,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47c9bee1d70207f3",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station1!A1",
+        "flatten": false,
+        "name": "to GS station1",
+        "x": 1020,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "54947c6c9d32a11e",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station1!A1",
+        "flatten": false,
+        "name": "to GS station1",
+        "x": 1020,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20a947f47b82be75",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station1!A1",
+        "flatten": false,
+        "name": "to GS station1",
+        "x": 1020,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb78a8016a18d469",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 520,
+        "wires": [
+            [
+                "7a0635ba275501c3"
+            ]
+        ]
+    },
+    {
+        "id": "632771c731743c42",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 480,
+        "wires": [
+            [
+                "1b95c68492d884d5"
+            ]
+        ]
+    },
+    {
+        "id": "ab478cc7c61c8b8e",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 440,
+        "wires": [
+            [
+                "4b075da2041152c4"
+            ]
+        ]
+    },
+    {
+        "id": "2b31b6b85dcd1562",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 400,
+        "wires": [
+            [
+                "b55fe4addfe6892f"
+            ]
+        ]
+    },
+    {
+        "id": "e021096c6c59798e",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station2!A1",
+        "flatten": false,
+        "name": "to GS station2",
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e09e17944582b506",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 760,
+        "wires": [
+            [
+                "1a798dde9b6e3a2b"
+            ]
+        ]
+    },
+    {
+        "id": "bc78b17d60b071b4",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 720,
+        "wires": [
+            [
+                "5044376001478e93"
+            ]
+        ]
+    },
+    {
+        "id": "cfdf43e14c351c26",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 680,
+        "wires": [
+            [
+                "9aa79fbf37cb14a8"
+            ]
+        ]
+    },
+    {
+        "id": "d9cb52565c11a5c0",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 640,
+        "wires": [
+            [
+                "2b0081a6fbdb6e36"
+            ]
+        ]
+    },
+    {
+        "id": "0e69831741268e0b",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station3!A1",
+        "flatten": false,
+        "name": "to GS station3",
+        "x": 1020,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b55fe4addfe6892f",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station2!A1",
+        "flatten": false,
+        "name": "to GS station2",
+        "x": 1020,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b075da2041152c4",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station2!A1",
+        "flatten": false,
+        "name": "to GS station2",
+        "x": 1020,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b95c68492d884d5",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station2!A1",
+        "flatten": false,
+        "name": "to GS station2",
+        "x": 1020,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a0635ba275501c3",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station2!A1",
+        "flatten": false,
+        "name": "to GS station2",
+        "x": 1020,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b0081a6fbdb6e36",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station3!A1",
+        "flatten": false,
+        "name": "to GS station3",
+        "x": 1020,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9aa79fbf37cb14a8",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station3!A1",
+        "flatten": false,
+        "name": "to GS station3",
+        "x": 1020,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5044376001478e93",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station3!A1",
+        "flatten": false,
+        "name": "to GS station3",
+        "x": 1020,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a798dde9b6e3a2b",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "station3!A1",
+        "flatten": false,
+        "name": "to GS station3",
+        "x": 1020,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "594115454e3459a9",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "station1 function",
+        "func": "\nvar allData = {}\nallData.payload = msg.payload.uplink_message.decoded_payload.alldata;\n\n// ORG and TBRG data at first minute in the first row\n\nvar RTCtime1 = {}\nRTCtime1.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 4) + \":\" + allData.payload.G_second;\nvar ORGmm1 = {}\nORGmm1.payload = allData.payload.H_rg15MM1;\nvar TBRGtip1 = {}\nTBRGtip1.payload = allData.payload.I_tbrgTIP1;\n\n// ORG and TBRG data at second minute in the second row\n\nvar RTCtime2 = {}\nRTCtime2.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 3) + \":\" + allData.payload.G_second;\nvar ORGmm2 = {}\nORGmm2.payload = allData.payload.H_rg15MM2;\nvar TBRGtip2 = {}\nTBRGtip2.payload = allData.payload.I_tbrgTIP2;\n\n// ORG and TBRG data at third minute in the third row\n\nvar RTCtime3 = {}\nRTCtime3.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 2) + \":\" + allData.payload.G_second;\nvar ORGmm3 = {}\nORGmm3.payload = allData.payload.H_rg15MM3;\nvar TBRGtip3 = {}\nTBRGtip3.payload = allData.payload.I_tbrgTIP3;\n\n// ORG and TBRG data at forth minute in the forth row\n\nvar RTCtime4 = {}\nRTCtime4.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 1) + \":\" + allData.payload.G_second;\nvar ORGmm4 = {}\nORGmm4.payload = allData.payload.H_rg15MM4;\nvar TBRGtip4 = {}\nTBRGtip4.payload = allData.payload.I_tbrgTIP4;\n\n//All data in the last row\nvar TTNdate = {}\nTTNdate.payload = msg.payload.uplink_message.received_at;\nTTNdate.payload = TTNdate.payload.replace('T', ' ').replace('Z', '')\nvar device_id = {}\ndevice_id.payload = msg.payload.end_device_ids.device_id;\nvar count = {}\ncount.payload = allData.payload.A_count;\nvar RTCtime5 = {}\nRTCtime5.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + allData.payload.F_minute + \":\" + allData.payload.G_second;\nvar ORGmm5 = {}\nORGmm5.payload = allData.payload.H_rg15MM5;\nvar TBRGtip5 = {}\nTBRGtip5.payload = allData.payload.I_tbrgTIP5;\nvar tempC = {}\ntempC.payload = allData.payload.J_tempC;\nvar batteryV = {}\nbatteryV.payload = allData.payload.K_batteryV;\nvar solarPanelV = {}\nsolarPanelV.payload = allData.payload.L_solarPanelV;\nvar SDflag = {}\nSDflag.payload = allData.payload.M_sdflag;\n\nvar rssi = {}\nrssi.payload = msg.payload.uplink_message.rx_metadata[0].rssi;\n\n// five outputs to Google sheet\n\nvar GS1 = {}\nGS1.payload = [\" \", \" \", \" \", RTCtime1.payload,ORGmm1.payload,TBRGtip1.payload];\n\nvar GS2 = {}\nGS2.payload = [\" \", \" \", \" \", RTCtime2.payload,ORGmm2.payload,TBRGtip2.payload];\n\nvar GS3 = {}\nGS3.payload = [\" \", \" \", \" \", RTCtime3.payload,ORGmm3.payload,TBRGtip3.payload];\n\nvar GS4 = {}\nGS4.payload = [\" \", \" \", \" \", RTCtime4.payload,ORGmm4.payload,TBRGtip4.payload];\n\nvar GS5 = {}\nGS5.payload = [TTNdate.payload, device_id.payload, count.payload, RTCtime5.payload,ORGmm5.payload,TBRGtip5.payload,tempC.payload,batteryV.payload,solarPanelV.payload,SDflag.payload,rssi.payload];\n\n\nreturn [GS1, GS2, GS3, GS4, GS5]\n\n",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 160,
+        "wires": [
+            [
+                "5a05beb3fd0457b2"
+            ],
+            [
+                "7d2b69d91233b479"
+            ],
+            [
+                "56a5180cdee5de2e"
+            ],
+            [
+                "237dfe8181f5c722"
+            ],
+            [
+                "48d20751eac3537d"
+            ]
+        ]
+    },
+    {
+        "id": "0c4edcd5a2d061cb",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "station2 function",
+        "func": "\nvar allData = {}\nallData.payload = msg.payload.uplink_message.decoded_payload.alldata;\n\n// ORG and TBRG data at first minute in the first row\n\nvar RTCtime1 = {}\nRTCtime1.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 4) + \":\" + allData.payload.G_second;\nvar ORGmm1 = {}\nORGmm1.payload = allData.payload.H_rg15MM1;\nvar TBRGtip1 = {}\nTBRGtip1.payload = allData.payload.I_tbrgTIP1;\n\n// ORG and TBRG data at second minute in the second row\n\nvar RTCtime2 = {}\nRTCtime2.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 3) + \":\" + allData.payload.G_second;\nvar ORGmm2 = {}\nORGmm2.payload = allData.payload.H_rg15MM2;\nvar TBRGtip2 = {}\nTBRGtip2.payload = allData.payload.I_tbrgTIP2;\n\n// ORG and TBRG data at third minute in the third row\n\nvar RTCtime3 = {}\nRTCtime3.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 2) + \":\" + allData.payload.G_second;\nvar ORGmm3 = {}\nORGmm3.payload = allData.payload.H_rg15MM3;\nvar TBRGtip3 = {}\nTBRGtip3.payload = allData.payload.I_tbrgTIP3;\n\n// ORG and TBRG data at forth minute in the forth row\n\nvar RTCtime4 = {}\nRTCtime4.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 1) + \":\" + allData.payload.G_second;\nvar ORGmm4 = {}\nORGmm4.payload = allData.payload.H_rg15MM4;\nvar TBRGtip4 = {}\nTBRGtip4.payload = allData.payload.I_tbrgTIP4;\n\n//All data in the last row\nvar TTNdate = {}\nTTNdate.payload = msg.payload.uplink_message.received_at;\nTTNdate.payload = TTNdate.payload.replace('T', ' ').replace('Z', '')\nvar device_id = {}\ndevice_id.payload = msg.payload.end_device_ids.device_id;\nvar count = {}\ncount.payload = allData.payload.A_count;\nvar RTCtime5 = {}\nRTCtime5.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + allData.payload.F_minute + \":\" + allData.payload.G_second;\nvar ORGmm5 = {}\nORGmm5.payload = allData.payload.H_rg15MM5;\nvar TBRGtip5 = {}\nTBRGtip5.payload = allData.payload.I_tbrgTIP5;\nvar tempC = {}\ntempC.payload = allData.payload.J_tempC;\nvar batteryV = {}\nbatteryV.payload = allData.payload.K_batteryV;\nvar solarPanelV = {}\nsolarPanelV.payload = allData.payload.L_solarPanelV;\nvar SDflag = {}\nSDflag.payload = allData.payload.M_sdflag;\n\nvar rssi = {}\nrssi.payload = msg.payload.uplink_message.rx_metadata[0].rssi;\n\n// five outputs to Google sheet\n\nvar GS1 = {}\nGS1.payload = [\" \", \" \", \" \", RTCtime1.payload,ORGmm1.payload,TBRGtip1.payload];\n\nvar GS2 = {}\nGS2.payload = [\" \", \" \", \" \", RTCtime2.payload,ORGmm2.payload,TBRGtip2.payload];\n\nvar GS3 = {}\nGS3.payload = [\" \", \" \", \" \", RTCtime3.payload,ORGmm3.payload,TBRGtip3.payload];\n\nvar GS4 = {}\nGS4.payload = [\" \", \" \", \" \", RTCtime4.payload,ORGmm4.payload,TBRGtip4.payload];\n\nvar GS5 = {}\nGS5.payload = [TTNdate.payload, device_id.payload, count.payload, RTCtime5.payload,ORGmm5.payload,TBRGtip5.payload,tempC.payload,batteryV.payload,solarPanelV.payload,SDflag.payload,rssi.payload];\n\n\nreturn [GS1, GS2, GS3, GS4, GS5]\n\n",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "e021096c6c59798e"
+            ],
+            [
+                "2b31b6b85dcd1562"
+            ],
+            [
+                "ab478cc7c61c8b8e"
+            ],
+            [
+                "632771c731743c42"
+            ],
+            [
+                "bb78a8016a18d469"
+            ]
+        ]
+    },
+    {
+        "id": "ac34c9be8ca1377a",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "station3 function",
+        "func": "\nvar allData = {}\nallData.payload = msg.payload.uplink_message.decoded_payload.alldata;\n\n// ORG and TBRG data at first minute in the first row\n\nvar RTCtime1 = {}\nRTCtime1.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 4) + \":\" + allData.payload.G_second;\nvar ORGmm1 = {}\nORGmm1.payload = allData.payload.H_rg15MM1;\nvar TBRGtip1 = {}\nTBRGtip1.payload = allData.payload.I_tbrgTIP1;\n\n// ORG and TBRG data at second minute in the second row\n\nvar RTCtime2 = {}\nRTCtime2.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 3) + \":\" + allData.payload.G_second;\nvar ORGmm2 = {}\nORGmm2.payload = allData.payload.H_rg15MM2;\nvar TBRGtip2 = {}\nTBRGtip2.payload = allData.payload.I_tbrgTIP2;\n\n// ORG and TBRG data at third minute in the third row\n\nvar RTCtime3 = {}\nRTCtime3.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 2) + \":\" + allData.payload.G_second;\nvar ORGmm3 = {}\nORGmm3.payload = allData.payload.H_rg15MM3;\nvar TBRGtip3 = {}\nTBRGtip3.payload = allData.payload.I_tbrgTIP3;\n\n// ORG and TBRG data at forth minute in the forth row\n\nvar RTCtime4 = {}\nRTCtime4.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + (allData.payload.F_minute - 1) + \":\" + allData.payload.G_second;\nvar ORGmm4 = {}\nORGmm4.payload = allData.payload.H_rg15MM4;\nvar TBRGtip4 = {}\nTBRGtip4.payload = allData.payload.I_tbrgTIP4;\n\n//All data in the last row\nvar TTNdate = {}\nTTNdate.payload = msg.payload.uplink_message.received_at;\nTTNdate.payload = TTNdate.payload.replace('T', ' ').replace('Z', '')\nvar device_id = {}\ndevice_id.payload = msg.payload.end_device_ids.device_id;\nvar count = {}\ncount.payload = allData.payload.A_count;\nvar RTCtime5 = {}\nRTCtime5.payload = \"20\" + allData.payload.B_year + \"-\" + allData.payload.C_month + \"-\" + allData.payload.D_day + \" \" + allData.payload.E_hour + \":\" + allData.payload.F_minute + \":\" + allData.payload.G_second;\nvar ORGmm5 = {}\nORGmm5.payload = allData.payload.H_rg15MM5;\nvar TBRGtip5 = {}\nTBRGtip5.payload = allData.payload.I_tbrgTIP5;\nvar tempC = {}\ntempC.payload = allData.payload.J_tempC;\nvar batteryV = {}\nbatteryV.payload = allData.payload.K_batteryV;\nvar solarPanelV = {}\nsolarPanelV.payload = allData.payload.L_solarPanelV;\nvar SDflag = {}\nSDflag.payload = allData.payload.M_sdflag;\n\nvar rssi = {}\nrssi.payload = msg.payload.uplink_message.rx_metadata[0].rssi;\n\n// five outputs to Google sheet\n\nvar GS1 = {}\nGS1.payload = [\" \", \" \", \" \", RTCtime1.payload,ORGmm1.payload,TBRGtip1.payload];\n\nvar GS2 = {}\nGS2.payload = [\" \", \" \", \" \", RTCtime2.payload,ORGmm2.payload,TBRGtip2.payload];\n\nvar GS3 = {}\nGS3.payload = [\" \", \" \", \" \", RTCtime3.payload,ORGmm3.payload,TBRGtip3.payload];\n\nvar GS4 = {}\nGS4.payload = [\" \", \" \", \" \", RTCtime4.payload,ORGmm4.payload,TBRGtip4.payload];\n\nvar GS5 = {}\nGS5.payload = [TTNdate.payload, device_id.payload, count.payload, RTCtime5.payload,ORGmm5.payload,TBRGtip5.payload,tempC.payload,batteryV.payload,solarPanelV.payload,SDflag.payload,rssi.payload];\n\n\nreturn [GS1, GS2, GS3, GS4, GS5]\n\n",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 660,
+        "wires": [
+            [
+                "0e69831741268e0b"
+            ],
+            [
+                "d9cb52565c11a5c0"
+            ],
+            [
+                "cfdf43e14c351c26"
+            ],
+            [
+                "bc78b17d60b071b4"
+            ],
+            [
+                "e09e17944582b506"
+            ]
+        ]
+    },
+    {
+        "id": "7750e9cddd3b0438",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "Rain gauges_string",
+        "topic": "#",
+        "qos": "1",
+        "datatype": "utf8",
+        "broker": "e37989fb7aa1de61",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 820,
+        "wires": [
+            [
+                "0a69ef30ccea8965"
+            ]
+        ]
+    },
+    {
+        "id": "0a69ef30ccea8965",
+        "type": "GSheet",
+        "z": "f6f2187d.f17ca8",
+        "creds": "f6dbe2354abef21f",
+        "method": "append",
+        "action": "",
+        "sheet": "1vHGu_1k3x0HgZHi_jhWX_x2QZvQJHBj1XrQAJ8t07jo",
+        "cells": "AllRawString!A1",
+        "flatten": false,
+        "name": "to GS AllRawString",
+        "x": 510,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e37989fb7aa1de61",
+        "type": "mqtt-broker",
+        "name": "Rain gauges",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "8883",
+        "tls": "cb831d23.dc4cc",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f6dbe2354abef21f",
+        "type": "gauth",
+        "name": "rain-gauges@symbolic-gift-366208.iam.gserviceaccount.com"
+    },
+    {
+        "id": "cb831d23.dc4cc",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]
